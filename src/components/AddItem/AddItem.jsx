@@ -5,7 +5,7 @@ import ItemForm from '../ItemForm/ItemForm'
 function AppItem(props) {
 
   return (
-    <div>
+    <div className={styles.additem}>
       <h2>Uuden merkinnän lisääminen</h2>
       <ItemForm />
     </div> 
