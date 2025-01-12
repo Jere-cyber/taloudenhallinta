@@ -9,9 +9,10 @@ function ItemForm(props) {
 
 
   const submit = () => {
-    console.log(values)
-    alert("SUBMIT")
+    props.onItemSubmit(values)
+    navigate(-1)
   }
+
 
   const initialState = {
     type: "",
