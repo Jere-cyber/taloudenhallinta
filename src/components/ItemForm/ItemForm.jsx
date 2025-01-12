@@ -5,6 +5,13 @@ import { useNavigate } from 'react-router-dom'
 
 function ItemForm(props) {
 
+
+  const handleDelete = () => {
+    props.onItemDelete(values.id)
+    navigate(-1)
+  }
+
+
   const navigate = useNavigate()
 
 
@@ -92,6 +99,15 @@ function ItemForm(props) {
 
             </div>
           </div>
+          { props.onItemDelete ? 
+            <div className={styles.itemform_row}>
+              <div>
+                <Button secondary onClick={handleDelete}>POISTA</Button>
+              </div>
+              <div></div>
+            </div>
+            : null }
+
         </div>
       </form>
     </div>

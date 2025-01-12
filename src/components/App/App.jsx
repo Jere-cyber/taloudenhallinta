@@ -8,8 +8,17 @@ import { useState } from 'react'
 function App() {
   const [data, setData] = useState(testdata)
 
+
+  const handleItemDelete = (id) => {
+    let copy = data.slice()
+    copy = copy.filter(item => item.id !== id)
+    setData(copy)
+  }
+
+
   const handleItemSubmit = (newitem) => {
     let copy = data.slice()
+
 
     const index = copy.findIndex(item => item.id === newitem.id)
     if (index >= 0) {
@@ -24,15 +33,15 @@ function App() {
       return bDate - aDate
     })
     setData(copy)
-  }
-
-
-
-
+  
+}
 
   return (
     <>
-        <AppRouter data={data} onItemSubmit={handleItemSubmit} />  
+            <AppRouter data={data} 
+                 onItemSubmit={handleItemSubmit} 
+                 onItemDelete={handleItemDelete} />
+
 
 
     </>
