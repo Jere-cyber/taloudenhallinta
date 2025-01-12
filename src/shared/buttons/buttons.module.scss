@@ -28,15 +28,15 @@
   .button_primary {
     background-color: $color-primary;
     color: $color-neutral-lightest;
-
+  }
 
   .button_secondary {
     background-color: $color-secondary;
     color: $color-neutral-lightest; 
     
-    }
-
   }
+
+
   .button_floating {
     position: fixed;
     bottom: 3.5rem;
@@ -49,6 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
   .button_container > div {
     transform: translateZ(0);  
