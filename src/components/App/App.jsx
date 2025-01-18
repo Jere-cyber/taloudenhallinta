@@ -36,21 +36,29 @@ function App() {
       return bDate - aDate
     })
     setData(copy)
-  
-}
 
-  return (
+    const handleTypeSubmit = (type) => {
+      let copy = typelist.slice()
+      copy.push(type)
+      copy.sort()
+      setTypelist(copy)
+    }
+  
+       return (
     <>
             
             <AppRouter data={data}
                  typelist={typelist}
                  onItemSubmit={handleItemSubmit}
-                 onItemDelete={handleItemDelete} />
+                 onItemDelete={handleItemDelete}
+                 onTypeSubmit={handleTypeSubmit} />
 
 
 
     </>
   )
+}
+
 }
 
 export default App
