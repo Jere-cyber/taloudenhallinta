@@ -1,17 +1,11 @@
-import AppRouter from '../AppRouter'
-import testdata from './testdata.js'
 import { useState } from 'react'
-
-
-
+import useLocalStorage from '../../shared/uselocalstorage/uselocalstorage.js'
+import AppRouter from '../AppRouter'
 
 function App() {
-
   
-  const [data, setData] = useState(testdata)
-
-  const [typelist, setTypelist] = useState(["Auto", "Puhelin", "Sähkö", "Vero", "Vesi"])
-
+  const [data, setData] = useLocalStorage('taloudenhallinta-data',[])
+  const [typelist, setTypelist] = useLocalStorage('taloudenhallinta-typelist',[])
 
 
   const handleItemDelete = (id) => {
@@ -20,10 +14,8 @@ function App() {
     setData(copy)
   }
 
-
   const handleItemSubmit = (newitem) => {
     let copy = data.slice()
-
 
     const index = copy.findIndex(item => item.id === newitem.id)
     if (index >= 0) {
@@ -39,27 +31,23 @@ function App() {
     })
     setData(copy)
   }
-    const handleTypeSubmit = (type) => {
-      let copy = typelist.slice()
-      copy.push(type)
-      copy.sort()
-      setTypelist(copy)
-    }
-  
-       return (
+
+  const handleTypeSubmit = (type) => {
+    let copy = typelist.slice()
+    copy.push(type)
+    copy.sort()
+    setTypelist(copy)
+  }
+
+  return (
     <>
-            
-            <AppRouter data={data}
+      <AppRouter data={data}
                  typelist={typelist}
                  onItemSubmit={handleItemSubmit}
                  onItemDelete={handleItemDelete}
                  onTypeSubmit={handleTypeSubmit} />
-
-
-
     </>
   )
 }
-
 
 export default App
