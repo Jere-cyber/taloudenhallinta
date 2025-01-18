@@ -1,6 +1,8 @@
 import styles from './Stats.module.scss'
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { LabelList, Legend, Pie, PieChart } from 'recharts'
+import { Cell } from 'recharts'
+import randomColor from 'randomcolor'
 
 function Stats(props) {
 
@@ -28,7 +30,12 @@ function Stats(props) {
     // Palautetaan tulostaulukko.
     return resultData
   }
+
   const piedata = props.data.reduce(reducer, [])
+  const piecolors = randomColor({ count: piedata.length,
+                                  seed: 'siemenluku',
+                                  luminosity: 'dark' })
+
   return (
     <div className={styles.stats}>
       <h2>Tilastot</h2>
@@ -51,6 +58,7 @@ function Stats(props) {
                    } />
         </LineChart>
       </ResponsiveContainer>
+
       <h3>Kulut kulutyypeittäin</h3>
       <ResponsiveContainer height={350}>
         <PieChart>
@@ -60,13 +68,14 @@ function Stats(props) {
                        formatter={
                         value => numberFormat.format(value)
                        } />
+            { piecolors.map( color => <Cell fill={color} key={color} />)}
           </Pie>
           <Legend />
           <Tooltip formatter={ value => numberFormat.format(value) } />
         </PieChart>
       </ResponsiveContainer>
+
     </div>
   )
 }
-
 export default Stats
