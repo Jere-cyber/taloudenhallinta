@@ -6,6 +6,8 @@ import Items from '../Items'
 import Root from '../Root'
 import Settings from '../Settings'
 import Stats from '../Stats'
+
+
 function AppRouter(props) {
   const router = createBrowserRouter([
     {
@@ -31,7 +33,7 @@ function AppRouter(props) {
               throw new Response("Not Found", { status: 404 })
             }
           } },
-        { path: "stats", element: <Stats /> },
+          { path: "stats", element: <Stats data={props.data} /> },
         { path: "settings",
           element: <Settings typelist={props.typelist}
                              onTypeSubmit={props.onTypeSubmit} /> }
