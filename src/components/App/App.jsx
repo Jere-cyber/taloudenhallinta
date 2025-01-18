@@ -6,6 +6,8 @@ import { useState } from 'react'
 
 
 function App() {
+
+  
   const [data, setData] = useState(testdata)
 
   const [typelist, setTypelist] = useState(["Auto", "Puhelin", "Sähkö", "Vero", "Vesi"])
@@ -36,7 +38,7 @@ function App() {
       return bDate - aDate
     })
     setData(copy)
-
+  }
     const handleTypeSubmit = (type) => {
       let copy = typelist.slice()
       copy.push(type)
@@ -59,6 +61,5 @@ function App() {
   )
 }
 
-}
 
 export default App
