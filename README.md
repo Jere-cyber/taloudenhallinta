@@ -39,4 +39,3 @@ Tätä projektia ylläpitää [Jere Vikstedt](https://github.com/Jere-cyber).
 ## Lisenssi
 
 Tämä projekti on julkaistu lisenssillä [MIT license](LICENSE).
-
